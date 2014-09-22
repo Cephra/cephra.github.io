@@ -16,8 +16,7 @@ $(document).ready(function () {
 
     menu = new Menu({
         "Start Game": function () {
-            scroller.scrolling = 
-                !scroller.scrolling;
+            scroller.scrolling = true;
             menu.hide();
             log("toggled background");
         },
