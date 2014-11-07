@@ -25,14 +25,20 @@ $(document).ready(function () {
             },
         },
     });
-    var startGame = function (difficulty) {
-        logicScroller.start();
-        logicMenu.hide();
-        // TODO init drawables
-    };
 
     var logicDrawables = new Drawables();
 
+    var startGame = function (difficulty) {
+        logicScroller.start();
+        logicMenu.hide();
+
+        var entShip = new PlayerShip();
+
+        logicDrawables.addDrawable(entShip);
+        Controller.set(entShip.getController());
+
+        logicDrawables.start();
+    };
     // load resources and start
     res.load(function () {
         // add rendering layers
