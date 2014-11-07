@@ -1,32 +1,52 @@
-var obj = {
-    up: function () {
-
-    },
-    down: function () {
-
-    },
-    left: function () {
-
-    },
-    right: function () {
-
-    },
-    enter: function () {
-
-    },
-}
-
-var Controls = (function () {
+// TODO put this in model pattern-esque format
+// set the receiver for the controls
+var Controller = (function () {
     var obj = {};
-    var arrStages = [];
-    var currStage = 0;
+    var currController = {};
 
-    obj.addStage = function (objHandler) {
-        arrStage.push(objHandler);
+    var execHandler = function (name) {
+        var f = currController[name];
+
+        if (typeof f === "function") {
+            f();
+        }
     };
 
-    obj.setStage = function (numStg) {
+    $(document).keydown(function (e) {
+        switch (e.which) {
 
+        case 38:
+            execHandler("up");
+            break;
+        case 40:
+            execHandler("down");
+            break;
+        case 37:
+            execHandler("left");
+            break;
+        case 39:
+            execHandler("right");
+            break;
+
+        case 13:
+            execHandler("enter");
+            break;
+        case 27:
+            execHandler("esc");
+            break;
+
+        case 32:
+            execHandler("space");
+            break;
+
+        default:
+            console.log(e.which);
+            break;
+        }
+    });
+
+    obj.set = function (to) {
+        currController = to;
     };
 
     return obj;

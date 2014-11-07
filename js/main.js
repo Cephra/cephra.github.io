@@ -2,42 +2,48 @@
 var res = new Resources({
     starfield: "gfx/starfield.png",
     clouds: "gfx/clouds.png",
+    invader: "gfx/invader.png",
 });
+
+var width = 320;
+var height = 620;
 
 // main
 $(document).ready(function () {
-    var scroller = new Parallax.Scroller();
+    var logicScroller = new Parallax.Scroller();
 
-    var menu = new Menu({
-        "Start Game": function () {
-            scroller.scrolling = true;
-            menu.hide();
-        },
-        "Options": {
-            "Difficulty": {
-                "Hard": 0,
-                "Medium": 0,
-                "Easy": 0,
+    var logicMenu = new Menu({
+        "Start Game": { 
+            "Easy": function () {
+                startGame(0);
             },
-            "Another Option": {
+            "Normal": function () {
+                startGame(1);
+            },
+            "Hard": function () {
+                startGame(2);
             },
         },
     });
+    var startGame = function (difficulty) {
+        logicScroller.start();
+        logicMenu.hide();
+        // TODO init drawables
+    };
 
-    var width = 320;
-    var height = 620;
-
-    var renderBgnd = makeRenderLayer(width, height, scroller);
-    var renderMenu = makeRenderLayer(width, height, menu);
+    var logicDrawables = new Drawables();
 
     // load resources and start
     res.load(function () {
-        renderMenu.start();
-
         // add rendering layers
-        scroller.addLayer(new Parallax.Layer(res.starfield, 1));
-        scroller.addLayer(new Parallax.Layer(res.clouds, 2));
+        logicScroller.addLayer(new Parallax.Layer(res.starfield, 1));
+        logicScroller.addLayer(new Parallax.Layer(res.clouds, 2));
 
-        renderBgnd.start();
+        // draw background just once
+        logicScroller.start();
+        logicScroller.stop();
+
+        // set initial controller to the menu
+        Controller.set(logicMenu.getController());
     });
 });
