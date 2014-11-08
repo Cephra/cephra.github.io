@@ -46,7 +46,7 @@ var PlayerShip = function () {
     var that = this;
 
     var x = 0, y = 0;
-    var vx = 0, vy = 0;
+    var vx = 2, vy = 2;
 
     this.init = function (context) {
         context.drawImage(res.invader, x, x);
@@ -54,21 +54,20 @@ var PlayerShip = function () {
 
     this.draw = function (context) {
         context.drawImage(res.invader, x, y);
-        x+=vx; y+=vy;
     };
 
     var controlHandlers = {
         up: function () {
-            vy = -1;
+            y += -vy;
         },
         down: function () {
-            vy = 1;
+            y += vy;
         },
         left: function () {
-            vx = -1;
+            x += -vx;
         },
         right: function () {
-            vx = 1;
+            x += vx;
         },
     };
     this.getController = function () {

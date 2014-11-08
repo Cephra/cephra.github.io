@@ -9,6 +9,10 @@ window.requestAnimFrame = (function () {
         };
 })();
 
+var Game = (function (obj) {
+
+})(Game);
+
 var Resources = function (sources) {
     // calc number of sprites
     var numSprites = 0;
@@ -29,6 +33,10 @@ var Resources = function (sources) {
         }
     };
 };
+
+var Game = (function (obj) {
+    console.dir(obj);
+}(Game || {}));
 
 var makeRenderLayer = function (width, height) {
     var obj = {};
