@@ -1,0 +1,33 @@
+-zahlensysteme-
+vorkomma
+dividieren bis 0
+nachkomma
+multiplizieren bis 0
+
+-periodendauer-
+kleinster zeitraum
+der veraenderung
+
+-gatter-
+OR >=1 A|B
+AND & A&B
+NAND &o !(A&B)
+XOR =1 (!A&B)|(A&!B)
+XNOR =1o (A&B)|(!A&!B)
+NOT 1o !A
+
+-A/D wandlung-
+abtastrate doppelt
+so hoch wie original
+
+-gleichungen-
+1 = (UND)ODER(UND)
+0 = (ODER)UND(ODER)
+
+-wahrheitstafeln-
+einzelgruppen 
+erstellen
+
+-schaltbild-
+aus gleichung
+erstellen
