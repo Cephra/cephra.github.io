@@ -9,7 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
   </head>
-  <body>
+  <body data-ng-controller="ngBinGameController">
     <div class="container">
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
@@ -25,27 +25,34 @@
           </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="#">Zurücksetzen</a></li>
+                <li><a href="" data-ng-click="resetHistory()">Zurücksetzen</a></li>
               </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
     </div>
-    <div class="container" data-ng-controller="ngBinGameController">
+    <div class="container">
       <div class="well">
         <table id="history" class="table table-striped">
           <thead>
             <tr>
               <td>Frage</td>
               <td>Antwort</td>
-              <td>Richtig<br>Falsch</td>
+              <td>Punkte</td>
             </tr>
           </thead>
           <tbody>
             <tr data-ng-repeat="item in history">
               <td>{{ item.q }}</td>
-              <td>{{ item.a }}</td>
-              <td>{{ item.p }}</td>
+              <td>
+                <span data-ng-if="item.p === 1" class="text-success">{{ item.a }}</span>
+                <span data-ng-if="item.p === 0" class="text-danger">{{ item.a }}</span>
+                <span data-ng-if="item.p === 0" class="text-success">{{ item.c }}</span>
+              </td>
+              <td>
+                <span data-ng-if="item.p === 1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span data-ng-if="item.p === 0" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </td>
             </tr>
           </tbody>
           <tfoot>

@@ -4,8 +4,8 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
   var randInt = function (max) {
     return Math.floor(Math.random()*(max+1));
   };
-
   $scope.history = [];
+  $scope.strAnswer = ""; 
 
   var genQuestion = function () {
     var pad8 = function (s) {
@@ -28,11 +28,14 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     var result = {
       q: $scope.currQuestion,
       a: $scope.strAnswer,
+      c: "",
     };
     if ($scope.strAnswer === currAnswer) {
       result.p = 1;
     } else {
       result.p = 0;
+      result.a = "Falsch";
+      result.c = currAnswer;
     }
 
     // push answer on the stack
@@ -44,6 +47,9 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     genQuestion();
   };
 
+  $scope.resetHistory = function () {
+    $scope.history = [];
+  };
 
   $scope.getPoints = function () {
     var points = 0;
