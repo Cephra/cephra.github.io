@@ -34,7 +34,6 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
       result.p = 1;
     } else {
       result.p = 0;
-      result.a = "Falsch";
       result.c = currAnswer;
     }
 
