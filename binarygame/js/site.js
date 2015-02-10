@@ -11,7 +11,7 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     var pad8 = function (s) {
       return Array(8+1-s.length).join("0")+s;
     };
-    var initNum = randInt(255);
+    var initNum = randInt(256);
     if (randInt(1) === 1) {
       // find binary
       currAnswer = pad8(initNum.toString(2));
