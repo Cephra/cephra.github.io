@@ -2,7 +2,7 @@ angular.module("ngBinGameApp", []).
 controller("ngBinGameController", [ "$scope", function ($scope) {
   var currAnswer = "";
   var randInt = function (max) {
-    return Math.floor(Math.random()*max);
+    return Math.floor(Math.random()*(max+1));
   };
 
   $scope.history = [];
@@ -11,7 +11,7 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     var pad8 = function (s) {
       return Array(8+1-s.length).join("0")+s;
     };
-    var initNum = randInt(256);
+    var initNum = randInt(255);
     if (randInt(1) === 1) {
       // find binary
       currAnswer = pad8(initNum.toString(2));
