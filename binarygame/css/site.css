@@ -7,6 +7,9 @@ body {
   margin-bottom: 20px;
 }
 
+#history td {
+    vertical-align: middle;
+}
 #history thead {
     font-weight: bold;
 }
