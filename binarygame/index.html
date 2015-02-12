@@ -45,10 +45,10 @@
             <tr data-ng-repeat="item in history">
               <td>{{ item.q }}</td>
               <td>
-                <span data-ng-if="item.p === 1" class="text-success">Richtig! Die Antwort lautet {{ item.a }}.</span>
+                <span data-ng-if="item.p === 1" class="text-success">Richtig! Die Antwort lautete: {{ item.a }}.</span>
                 <span data-ng-if="item.p === 0" class="text-danger">{{ item.a }} ist falsch!</span>
                 <br>
-                <span data-ng-if="item.p === 0" class="text-success">Die richtige Antwort wäre {{ item.c }}.</span>
+                <span data-ng-if="item.p === 0" class="text-success">Die richtige Antwort lautet: {{ item.c }}.</span>
               </td>
               <td>
                 <span data-ng-if="item.p === 1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
