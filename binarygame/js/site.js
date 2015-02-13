@@ -18,16 +18,14 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
 
     if (randInt(1) === 1) {
       // find binary
-      currAnswer.v = 
-        sanitize(initNum.toString(2));
-      currAnswer.t = "b";
+      currAnswer.v = sanitize(initNum.toString(2));
+      $scope.questionType = "d";
       $scope.currQuestion = initNum.toString();
     } else {
       // find decimal 
       currAnswer.v = initNum.toString();
-      currAnswer.t = "d";
-      $scope.currQuestion = 
-        sanitize(initNum.toString(2));
+      $scope.questionType = "b";
+      $scope.currQuestion = sanitize(initNum.toString(2));
     }
   };
   genQuestion();
@@ -39,7 +37,7 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     // answer validation
     if (tmpAnswer === "") {
       tmpAnswer = "Ihre Antwort"
-    } else if (currAnswer.t === "b") {
+    } else if ($scope.questionType === "d") {
       // allow for binary answers < 8 bit
       tmpAnswer = sanitize(tmpAnswer);
     }
@@ -47,6 +45,7 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     // object to store the result
     var result = {
       q: $scope.currQuestion,
+      t: $scope.questionType,
       a: tmpAnswer,
       c: "",
     };
@@ -66,7 +65,6 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
   $scope.resetGame = function () {
     $scope.history = [];
   };
-
   $scope.getPoints = function () {
     var points = 0;
     $scope.history.forEach(function (i) {

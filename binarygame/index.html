@@ -43,7 +43,7 @@
           </thead>
           <tbody>
             <tr data-ng-repeat="item in history">
-              <td>{{ item.q }}</td>
+              <td>0{{ item.t }}{{ item.q }}</td>
               <td>
                 <span data-ng-if="item.p === 1" class="text-success">Richtig! Die Antwort lautete: {{ item.a }}</span>
                 <span data-ng-if="item.p === 0" class="text-danger">{{ item.a }} ist falsch!</span>
@@ -58,7 +58,9 @@
           </tbody>
           <tfoot>
             <tr>
-              <td>{{ currQuestion }}</td>
+              <td>
+                0{{ questionType }}{{ currQuestion }}
+              </td>
               <td>
                 <form data-ng-submit="checkAnswer()">
                   <div class="input-group">
