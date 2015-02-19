@@ -72,4 +72,10 @@ controller("ngBinGameController", [ "$scope", function ($scope) {
     });
     return points;
   };
-}]);
+}])
+
+.filter("reverse", function () {
+  return function(list) {
+    return list.slice().reverse();
+  };
+})

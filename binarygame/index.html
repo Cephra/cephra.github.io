@@ -11,7 +11,6 @@
   </head>
   <body data-ng-controller="ngBinGameController">
     <div class="container">
-      <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -40,23 +39,6 @@
               <td>Antwort</td>
               <td>Richtig?</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="item in history">
-              <td>0{{ item.t }}{{ item.q }}</td>
-              <td>
-                <span data-ng-if="item.p === 1" class="text-success">Richtig! Die Antwort lautete: {{ item.a }}</span>
-                <span data-ng-if="item.p === 0" class="text-danger">{{ item.a }} ist falsch!</span>
-                <br>
-                <span data-ng-if="item.p === 0" class="text-success">Die richtige Antwort lautet: {{ item.c }}</span>
-              </td>
-              <td>
-                <span data-ng-if="item.p === 1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                <span data-ng-if="item.p === 0" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
             <tr>
               <td>
                 0{{ questionType }}{{ currQuestion }}
@@ -73,7 +55,22 @@
               </td>
               <td><b>{{ getPoints() }}/{{ history.length }}</b></td>
             </tr>
-          </tfoot>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="item in history | reverse">
+              <td>0{{ item.t }}{{ item.q }}</td>
+              <td>
+                <span data-ng-if="item.p === 1" class="text-success">Richtig! Die Antwort lautete: {{ item.a }}</span>
+                <span data-ng-if="item.p === 0" class="text-danger">{{ item.a }} ist falsch!</span>
+                <br>
+                <span data-ng-if="item.p === 0" class="text-success">Die richtige Antwort lautet: {{ item.c }}</span>
+              </td>
+              <td>
+                <span data-ng-if="item.p === 1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span data-ng-if="item.p === 0" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -81,6 +78,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap.min.js"></script>
-    <script src="js/site.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

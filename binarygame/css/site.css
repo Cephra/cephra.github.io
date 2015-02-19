@@ -10,7 +10,10 @@ body {
 #history td {
     vertical-align: middle;
 }
-#history thead {
+#history tr td:nth-child(1) {
+    min-width: 8em;
+}
+#history thead tr:nth-child(1) {
     font-weight: bold;
 }
 
