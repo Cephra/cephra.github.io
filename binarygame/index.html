@@ -38,9 +38,7 @@
               <td>Frage</td>
               <td>Antwort</td>
               <td>
-                Punkte
-                <br>
-                {{ getPoints() }}
+                <span>Punkte: {{ getPoints() }}</span>
               </td>
             </tr>
             <tr>
@@ -75,10 +73,10 @@
               </td>
               <td>
                 <div data-ng-if="item.p > 0">
-                    <b>{{ item.p }}</b>
+                  <span class="text-success"><b>{{ item.p }}</b></span>
                 </div>
                 <div data-ng-if="item.p === 0">
-                    <b>{{ item.p }}</b>
+                  <span class="text-danger"><b>{{ item.p }}</b></span>
                 </div>
               </td>
             </tr>

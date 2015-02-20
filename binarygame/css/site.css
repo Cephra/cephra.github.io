@@ -13,15 +13,9 @@ body {
 #history tr td:nth-child(1) {
     min-width: 7em;
 }
+#history tr td:nth-child(3) {
+    min-width: 7em;
+}
 #history thead tr:nth-child(1) {
     font-weight: bold;
-}
-
-#history td:nth-child(3) {
-    text-align: center;
-}
-
-#history tbody .label {
-    min-width: 8em;
-    text-align: center;
 }
