@@ -20,3 +20,8 @@ body {
 #history td:nth-child(3) {
     text-align: center;
 }
+
+#history tbody .label {
+    min-width: 8em;
+    text-align: center;
+}
