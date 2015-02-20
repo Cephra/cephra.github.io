@@ -37,7 +37,11 @@
             <tr>
               <td>Frage</td>
               <td>Antwort</td>
-              <td>Richtig?</td>
+              <td>
+                Punkte
+                <br>
+                {{ getPoints() }}
+              </td>
             </tr>
             <tr>
               <td>
@@ -53,14 +57,14 @@
                   </div>
                 </form>
               </td>
-              <td><b>{{ getPoints() }}/{{ history.length }}</b></td>
+              <td><b>{{ currPoints }}</b></td>
             </tr>
           </thead>
           <tbody>
             <tr data-ng-repeat="item in history | reverse">
               <td>0{{ item.t }}{{ item.q }}</td>
               <td>
-                <div data-ng-if="item.p === 1">
+                <div data-ng-if="item.p > 0">
                   <span class="text-success">Richtig! Die Antwort lautete: {{ item.a }}</span>
                 </div>
                 <div data-ng-if="item.p === 0">
@@ -70,8 +74,18 @@
                 </div>
               </td>
               <td>
-                <span data-ng-if="item.p === 1" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                <span data-ng-if="item.p === 0" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <div data-ng-if="item.p > 0">
+                  <span class="label label-success">
+                    <b>{{ item.p }}</b>
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  </span>
+                </div>
+                <div data-ng-if="item.p === 0">
+                  <span class="label label-danger">
+                    <b>{{ item.p }}</b>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </span>
+                </div>
               </td>
             </tr>
           </tbody>
